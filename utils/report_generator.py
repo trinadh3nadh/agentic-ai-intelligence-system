@@ -1,27 +1,37 @@
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+import os
 
 
-def generate_report(query, final_answer):
+def generate_report(query, answer):
 
     filename = "ai_report.pdf"
 
-    c = canvas.Canvas(filename, pagesize=letter)
+    styles = getSampleStyleSheet()
 
-    text = c.beginText(40, 750)
+    elements = []
 
-    text.setFont("Helvetica", 12)
+    elements.append(Paragraph("AI Research Report", styles["Title"]))
+    elements.append(Spacer(1, 20))
 
-    text.textLine("AI Research Report")
-    text.textLine("")
-    text.textLine("Query:")
-    text.textLine(query)
-    text.textLine("")
-    text.textLine("Final Answer:")
-    text.textLine(final_answer)
+    elements.append(Paragraph("<b>Query:</b>", styles["Heading3"]))
+    elements.append(Paragraph(query, styles["BodyText"]))
+    elements.append(Spacer(1, 20))
 
-    c.drawText(text)
+    elements.append(Paragraph("<b>Final Answer:</b>", styles["Heading3"]))
+    elements.append(Paragraph(answer.replace("\n", "<br/>"), styles["BodyText"]))
 
-    c.save()
+    doc = SimpleDocTemplate(
+        filename,
+        pagesize=letter,
+        rightMargin=72,
+        leftMargin=72,
+        topMargin=72,
+        bottomMargin=72
+    )
+
+    doc.build(elements)
 
     return filename
