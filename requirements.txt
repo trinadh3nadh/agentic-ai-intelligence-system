@@ -1,0 +1,14 @@
+streamlit
+pandas
+numpy
+matplotlib
+seaborn
+networkx
+pyvis
+sentence-transformers
+groq
+tavily-python
+rank-bm25
+openpyxl
+scikit-learn
+reportlab
