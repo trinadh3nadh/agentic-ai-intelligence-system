@@ -142,7 +142,7 @@ agentic-ai-intelligence-system
 Clone the repository:
 
 ```
-git clone https://github.com/YOUR_USERNAME/agentic-ai-intelligence-system.git
+git clone https://github.com/trinadh3nadh/agentic-ai-intelligence-system
 cd agentic-ai-intelligence-system
 ```
 
@@ -222,3 +222,4 @@ AI | ML Engineer | Data Scientist
 * Tavily Search
 * Streamlit
 * Open-source AI ecosystem
+
